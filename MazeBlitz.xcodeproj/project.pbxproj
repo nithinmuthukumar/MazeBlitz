@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D84ADC222E8BCA700A3B5C9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84ADC122E8BCA700A3B5C9 /* Player.swift */; };
+		8D84ADC422E8C0BF00A3B5C9 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84ADC322E8C0BF00A3B5C9 /* Vector2.swift */; };
 		8DA5947022E2B04500D7912A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5946F22E2B04500D7912A /* AppDelegate.swift */; };
 		8DA5947222E2B04500D7912A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8DA5947122E2B04500D7912A /* GameScene.sks */; };
 		8DA5947422E2B04500D7912A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8DA5947322E2B04500D7912A /* Actions.sks */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D84ADC122E8BCA700A3B5C9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		8D84ADC322E8C0BF00A3B5C9 /* Vector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		8DA5946C22E2B04500D7912A /* MazeBlitz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeBlitz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA5946F22E2B04500D7912A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DA5947122E2B04500D7912A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 			children = (
 				8DA5946F22E2B04500D7912A /* AppDelegate.swift */,
 				8DA5947122E2B04500D7912A /* GameScene.sks */,
+				8D84ADC122E8BCA700A3B5C9 /* Player.swift */,
+				8D84ADC322E8C0BF00A3B5C9 /* Vector2.swift */,
 				8DA5947322E2B04500D7912A /* Actions.sks */,
 				8DA5947522E2B04500D7912A /* GameScene.swift */,
 				8DA5947722E2B04500D7912A /* GameViewController.swift */,
@@ -267,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D84ADC222E8BCA700A3B5C9 /* Player.swift in Sources */,
 				8DA5947622E2B04500D7912A /* GameScene.swift in Sources */,
 				8DA5947822E2B04500D7912A /* GameViewController.swift in Sources */,
+				8D84ADC422E8C0BF00A3B5C9 /* Vector2.swift in Sources */,
 				8DA5947022E2B04500D7912A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
