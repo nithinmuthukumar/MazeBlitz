@@ -19,9 +19,19 @@ class Vector2{
     func len()->CGFloat{
         return CGFloat.squareRoot(x * x + y * y)()
     }
-    func nor(){
+    func nor()->Vector2{
         let length=len()
         x/=length
         y/=length
+        return self
+    }
+    func scl(_ factor:CGFloat)->Vector2{
+        x*=factor
+        y*=factor
+        return self
+    }
+    func angle () ->CGFloat{
+        return atan2(y, x)
+    
     }
 }

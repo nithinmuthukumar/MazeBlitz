@@ -11,16 +11,18 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
-    
-    private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    var player:Player?
+    var gameCam: SKCameraNode?
+    var player:Player!
     
     override func sceneDidLoad() {
-        player=Player()
+        player=Player(CGFloat.random(in: 0..<1000),CGFloat.random(in: 0..<1000))
         addChild(player!.body)
+        gameCam = childNode(withName: "camera") as? SKCameraNode
+        camera=gameCam
+        
+        
+        
+        
         
         
 
@@ -42,16 +44,25 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        player.touch(touches.first!.location(in: self))
+        
+            
+        
         
         
         
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(player.active){
+            player.moveStick(touches.first!)
+            
+        }
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        player.active=false
         
     }
     
@@ -59,7 +70,9 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        player?.update()
+        camera!.position.x=player.body.position.x
+        camera!.position.y=player.body.position.y
+        player.update()
         
     }
 }
