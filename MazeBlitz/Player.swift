@@ -10,21 +10,28 @@ import Foundation
 import SpriteKit
 import GameplayKit
 class Player{
-    var active=false
+    var active: Bool=false{
+        willSet{
+            
+            if(active){
+                for child in body.children{
+                    child.run(SKAction.move(to: CGPoint(x:0,y:0), duration: 1))
+                }
+            }
+        }
+    }
     var velocity=Vector2(0,0)
     var speed:CGFloat=5
     
     var body=SKNode()
     init(_ x:CGFloat,_ y:CGFloat){
+        body.position.x=x
+        body.position.y=y
         grow(128)
         grow(64)
         grow(32)
         grow(16)
         grow(8)
-        
-        
-        body.position.x=x
-        body.position.y=y
     }
     func grow(_ size:CGFloat){
         let root=SKShapeNode(circleOfRadius: size)
@@ -41,6 +48,11 @@ class Player{
         if(active){
             body.position.x-=velocity.x
             body.position.y-=velocity.y
+        }else if(velocity.len()>0.5){
+            body.position.x-=velocity.x
+            body.position.y-=velocity.y
+            velocity.scl(0.9)
+            
         }
         
         
@@ -52,6 +64,13 @@ class Player{
             
         }
         
+    }
+    func moveStick(_ touch:UITouch){
+        let point=touch.location(in: body)
+        velocity.x=point.x
+        velocity.y=point.y
+        velocity.nor().scl(speed)
+        moveStick(body.children.count-1,point)
     }
     func moveStick(_ index:Int,_ newPos:CGPoint){
         
@@ -76,17 +95,7 @@ class Player{
             
         }
     }
-    func moveStick(_ touch:UITouch){
-        let point=touch.location(in: body)
-        velocity.x=point.x
-        velocity.y=point.y
-        velocity.nor().scl(speed)
-        moveStick(body.children.count-1,point)
-
-        
-        
-        
-        
-    }
+    
+    
     
 }

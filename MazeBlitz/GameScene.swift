@@ -15,8 +15,7 @@ class GameScene: SKScene {
     var player:Player!
     
     override func sceneDidLoad() {
-        player=Player(CGFloat.random(in: 0..<1000),CGFloat.random(in: 0..<1000))
-        addChild(player!.body)
+        
         gameCam = childNode(withName: "camera") as? SKCameraNode
         camera=gameCam
         
@@ -44,7 +43,13 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(player==nil){
+            player=Player(CGFloat.random(in: 0..<1000),CGFloat.random(in: 0..<1000))
+            addChild(player!.body)
+            gameCam?.run(SKAction.move(to: player.body.position, duration: 1))
+        }
         player.touch(touches.first!.location(in: self))
+        
         
             
         
@@ -70,9 +75,13 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        camera!.position.x=player.body.position.x
-        camera!.position.y=player.body.position.y
-        player.update()
+        if(player != nil){
+            if(!gameCam!.hasActions()){
+                camera!.position.x=player.body.position.x
+                camera!.position.y=player.body.position.y
+            }
+            player.update()
+        }
         
     }
 }
