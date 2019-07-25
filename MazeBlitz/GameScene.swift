@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    var prey=[Prey]()
     
     var gameCam: SKCameraNode?
     var player:Player!
@@ -18,6 +19,10 @@ class GameScene: SKScene {
         
         gameCam = childNode(withName: "camera") as? SKCameraNode
         camera=gameCam
+        for i in 0..<50{
+            prey.append(TrianglePrey(CGFloat.random(in: 0..<5000),CGFloat.random(in: 0..<5000)))
+            addChild(prey[i].body)
+        }
         
         
         
@@ -44,7 +49,7 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(player==nil){
-            player=Player(CGFloat.random(in: 0..<1000),CGFloat.random(in: 0..<1000))
+            player=Player(CGFloat.random(in: 0..<5000),CGFloat.random(in: 0..<5000))
             addChild(player!.body)
             gameCam?.run(SKAction.move(to: player.body.position, duration: 1))
         }
@@ -60,7 +65,7 @@ class GameScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(player.active){
-            player.moveStick(touches.first!)
+            player.moveStick(touches.first!.location(in: self))
             
         }
         
@@ -75,12 +80,22 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        if(player != nil){
-            if(!gameCam!.hasActions()){
-                camera!.position.x=player.body.position.x
-                camera!.position.y=player.body.position.y
+        if(player == nil){
+            return
+        }
+        if(!gameCam!.hasActions()){
+            camera!.position.x=player.body.position.x
+            camera!.position.y=player.body.position.y
+        }
+        player.update()
+        
+        for p in 0..<prey.count{
+            if(player.contains(prey[p].body.position)){
+                player.eat(prey[p])
+                prey[p].body.removeFromParent()
+                prey.remove(at: p)
+                break
             }
-            player.update()
         }
         
     }

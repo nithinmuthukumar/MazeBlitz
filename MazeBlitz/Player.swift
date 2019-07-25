@@ -9,36 +9,78 @@
 import Foundation
 import SpriteKit
 import GameplayKit
-class Player{
+class Player:Entity{
+    
+    var body:SKShapeNode!
+    
     var active: Bool=false{
         willSet{
             
+            
             if(active){
-                for child in body.children{
-                    child.run(SKAction.move(to: CGPoint(x:0,y:0), duration: 1))
+                var node:SKShapeNode=body
+                while(!node.children.isEmpty){
+                    var nextNode=node.children.first as! SKShapeNode
+                    nextNode.run(SKAction.move(to: CGPoint(x:0,y:0), duration: 1))
+                    node=nextNode
                 }
+                
             }
         }
     }
     var velocity=Vector2(0,0)
     var speed:CGFloat=5
-    
-    var body=SKNode()
-    init(_ x:CGFloat,_ y:CGFloat){
+
+    required init(_ x:CGFloat,_ y:CGFloat){
+        grow(8)
+        grow(16)
+        
+        
         body.position.x=x
         body.position.y=y
-        grow(128)
-        grow(64)
-        grow(32)
-        grow(16)
-        grow(8)
+        
+        
+    }
+    func contains(_ p:CGPoint)->Bool{
+        var point=p
+        var node:SKShapeNode=body
+        while(!node.children.isEmpty){
+            
+            if node.contains(point){
+                return true;
+            }
+            node=node.children.first as! SKShapeNode
+            point.x-=node.position.x
+            point.y-=node.position.y
+            
+        }
+        return false;
+        
+    }
+    func eat(_ p:Prey){
+        
+        grow(body.path!.boundingBox.width)
     }
     func grow(_ size:CGFloat){
+        
+        
         let root=SKShapeNode(circleOfRadius: size)
+        if(body != nil){
+            
+            if let parent=body.parent{
+                parent.addChild(root)
+                
+            }
+            body.removeFromParent()
+            root.addChild(body)
+            root.position=body.position
+            
+        }
+    
         root.fillColor=SKColor.white
         root.strokeColor=SKColor.black
         
-        body.addChild(root)
+        body=root
         
         
     
@@ -65,35 +107,40 @@ class Player{
         }
         
     }
-    func moveStick(_ touch:UITouch){
-        let point=touch.location(in: body)
-        velocity.x=point.x
-        velocity.y=point.y
+    func moveStick(_ p:CGPoint){
+        var point=p
+        velocity.x=point.x-body.position.x
+        velocity.y=point.y-body.position.y
         velocity.nor().scl(speed)
-        moveStick(body.children.count-1,point)
-    }
-    func moveStick(_ index:Int,_ newPos:CGPoint){
-        
-        if index-1 == -1{
-            return
-        }
-        moveStick(index-1,newPos)
-        if let parent=body.children[index-1] as? SKShapeNode,let node=body.children[index] as? SKShapeNode {
-        
+        var node:SKShapeNode=body
+        while(!node.children.isEmpty){
             
             
-            
-            if(parent.contains(newPos)){
-                node.position=newPos
-                
+            var nextNode=node.children.first as! SKShapeNode
+            if(node.contains(point)){
+                point.x-=node.position.x
+                point.y-=node.position.y
+                nextNode.position=point
             }else{
-                let sz=node.path!.boundingBox.width
-                let nextPos=CGPoint(x:sz*cos(velocity.angle())+parent.position.x,y:sz*sin(velocity.angle())+parent.position.y)
                 
-                node.run(SKAction.move(to: nextPos, duration: 0.1))
+                point.x-=node.position.x
+                point.y-=node.position.y
+                
+                let sz=nextNode.path!.boundingBox.width
+                let nextPos=CGPoint(x:sz*cos(velocity.angle()),y:sz*sin(velocity.angle()))
+                
+                nextNode.run(SKAction.move(to: nextPos, duration: 0.1))
+                
+                
             }
+            node=nextNode
+            
+            
+            
+            
             
         }
+    
     }
     
     

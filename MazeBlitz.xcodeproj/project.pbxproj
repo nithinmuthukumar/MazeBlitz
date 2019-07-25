@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D815C5522E9728D00AA6568 /* Prey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815C5422E9728C00AA6568 /* Prey.swift */; };
+		8D815C5922E976DC00AA6568 /* TrianglePrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815C5822E976DC00AA6568 /* TrianglePrey.swift */; };
+		8D815C5B22E9772100AA6568 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815C5A22E9772100AA6568 /* Entity.swift */; };
 		8D84ADC222E8BCA700A3B5C9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84ADC122E8BCA700A3B5C9 /* Player.swift */; };
 		8D84ADC422E8C0BF00A3B5C9 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84ADC322E8C0BF00A3B5C9 /* Vector2.swift */; };
 		8DA5947022E2B04500D7912A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5946F22E2B04500D7912A /* AppDelegate.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D815C5422E9728C00AA6568 /* Prey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prey.swift; sourceTree = "<group>"; };
+		8D815C5822E976DC00AA6568 /* TrianglePrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrianglePrey.swift; sourceTree = "<group>"; };
+		8D815C5A22E9772100AA6568 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8D84ADC122E8BCA700A3B5C9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		8D84ADC322E8C0BF00A3B5C9 /* Vector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		8DA5946C22E2B04500D7912A /* MazeBlitz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeBlitz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +116,9 @@
 				8DA5946F22E2B04500D7912A /* AppDelegate.swift */,
 				8DA5947122E2B04500D7912A /* GameScene.sks */,
 				8D84ADC122E8BCA700A3B5C9 /* Player.swift */,
+				8D815C5422E9728C00AA6568 /* Prey.swift */,
+				8D815C5A22E9772100AA6568 /* Entity.swift */,
+				8D815C5822E976DC00AA6568 /* TrianglePrey.swift */,
 				8D84ADC322E8C0BF00A3B5C9 /* Vector2.swift */,
 				8DA5947322E2B04500D7912A /* Actions.sks */,
 				8DA5947522E2B04500D7912A /* GameScene.swift */,
@@ -275,7 +284,10 @@
 			files = (
 				8D84ADC222E8BCA700A3B5C9 /* Player.swift in Sources */,
 				8DA5947622E2B04500D7912A /* GameScene.swift in Sources */,
+				8D815C5922E976DC00AA6568 /* TrianglePrey.swift in Sources */,
 				8DA5947822E2B04500D7912A /* GameViewController.swift in Sources */,
+				8D815C5B22E9772100AA6568 /* Entity.swift in Sources */,
+				8D815C5522E9728D00AA6568 /* Prey.swift in Sources */,
 				8D84ADC422E8C0BF00A3B5C9 /* Vector2.swift in Sources */,
 				8DA5947022E2B04500D7912A /* AppDelegate.swift in Sources */,
 			);
