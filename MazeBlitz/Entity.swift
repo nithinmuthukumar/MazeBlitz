@@ -10,6 +10,13 @@ import Foundation
 import SpriteKit
 import GameKit
 protocol Entity {
+    
     var body:SKShapeNode! {get}
+    
+    var shape:Shape {get}
+    var velocity:Vector2 {get}
+    var worth:Int { get }
+    
     init(_ x:CGFloat, _ y:CGFloat)
+    func eat(entity:Entity)
 }

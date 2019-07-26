@@ -9,7 +9,17 @@
 import Foundation
 import SpriteKit
 import GameKit
-class TrianglePrey:Prey{
+class TrianglePrey:Entity{
+    var shape=Shape.Triangle
+    
+    
+    
+    
+    
+    
+    
+    var velocity=Vector2(0,0)
+    
     
     
     var body:SKShapeNode!
@@ -22,6 +32,8 @@ class TrianglePrey:Prey{
         path.addLine(to: CGPoint(x: -5*3, y: -3.66*3))
         path.addLine(to: CGPoint(x: 0.0, y: 5*3))
         body=SKShapeNode(path: path.cgPath)
+        
+        
     
         body.position.x=x
         body.position.y=y
@@ -29,13 +41,12 @@ class TrianglePrey:Prey{
         body.run(SKAction.repeatForever(SKAction.rotate(byAngle: 1, duration: 2)))
         body.fillColor=SKColor.white
         body.strokeColor=SKColor.black
+        
+        body.physicsBody=SKPhysicsBody(polygonFrom: body.path!)
+        body.name=shape.description
     }
     
-    
-    
-    
-    func update(players: [Player]) {
-    }
+
     
     
     

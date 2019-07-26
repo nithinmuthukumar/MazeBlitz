@@ -10,8 +10,20 @@ import Foundation
 import SpriteKit
 import GameplayKit
 class Player:Entity{
+    var shape=Shape.Circle
+    
+    
+
+    
+    
+    var worth=100
+    
+    
+    
     
     var body:SKShapeNode!
+    var exp=0
+    var expPerLevel=[5,10,20,50]
     
     var active: Bool=false{
         willSet{
@@ -32,8 +44,10 @@ class Player:Entity{
     var speed:CGFloat=5
 
     required init(_ x:CGFloat,_ y:CGFloat){
+        
         grow(8)
         grow(16)
+        
         
         
         body.position.x=x
@@ -57,14 +71,25 @@ class Player:Entity{
         return false;
         
     }
-    func eat(_ p:Prey){
+    func eat(_ p:Entity){
+        exp+=1
+        if(exp>expPerLevel[0]){
+            grow(body.path!.boundingBox.width)
+            expPerLevel.removeFirst()
+        }
+    }
+    func createShape(_ size:CGFloat,_ sides:Int)->SKShapeNode{
         
-        grow(body.path!.boundingBox.width)
+        var polygon=SKShapeNode(circleOfRadius: size)
+        polygon.physicsBody=SKPhysicsBody(polygonFrom: polygon.path!)
+        polygon.name=shape.description
+        return polygon
     }
     func grow(_ size:CGFloat){
         
         
-        let root=SKShapeNode(circleOfRadius: size)
+        let root=createShape(size,0)
+        
         if(body != nil){
             
             if let parent=body.parent{
@@ -96,15 +121,9 @@ class Player:Entity{
             velocity.scl(0.9)
             
         }
-        
-        
-        
     }
     func touch(_ point:CGPoint){
-        if(body.contains(point)){
-            active=true
-            
-        }
+        active=true
         
     }
     func moveStick(_ p:CGPoint){

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D815C5522E9728D00AA6568 /* Prey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815C5422E9728C00AA6568 /* Prey.swift */; };
+		8D1B8F5D22EA37D200E0AE26 /* SquarePrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1B8F5C22EA37D200E0AE26 /* SquarePrey.swift */; };
 		8D815C5922E976DC00AA6568 /* TrianglePrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815C5822E976DC00AA6568 /* TrianglePrey.swift */; };
 		8D815C5B22E9772100AA6568 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D815C5A22E9772100AA6568 /* Entity.swift */; };
 		8D84ADC222E8BCA700A3B5C9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84ADC122E8BCA700A3B5C9 /* Player.swift */; };
@@ -22,6 +22,9 @@
 		8DA5948022E2B04600D7912A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA5947E22E2B04600D7912A /* LaunchScreen.storyboard */; };
 		8DA5948B22E2B04600D7912A /* MazeBlitzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5948A22E2B04600D7912A /* MazeBlitzTests.swift */; };
 		8DA5949622E2B04600D7912A /* MazeBlitzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5949522E2B04600D7912A /* MazeBlitzUITests.swift */; };
+		8DDE65D622EB82AE006C21C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE65D522EB82AE006C21C1 /* Constants.swift */; };
+		8DE6B8E522EA64C70064FB74 /* PentagonPrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE6B8E422EA64C70064FB74 /* PentagonPrey.swift */; };
+		8DE6B8E722EA65EF0064FB74 /* AI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE6B8E622EA65EF0064FB74 /* AI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8D815C5422E9728C00AA6568 /* Prey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prey.swift; sourceTree = "<group>"; };
+		8D1B8F5C22EA37D200E0AE26 /* SquarePrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarePrey.swift; sourceTree = "<group>"; };
 		8D815C5822E976DC00AA6568 /* TrianglePrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrianglePrey.swift; sourceTree = "<group>"; };
 		8D815C5A22E9772100AA6568 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8D84ADC122E8BCA700A3B5C9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -63,6 +66,9 @@
 		8DA5949122E2B04600D7912A /* MazeBlitzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeBlitzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA5949522E2B04600D7912A /* MazeBlitzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeBlitzUITests.swift; sourceTree = "<group>"; };
 		8DA5949722E2B04600D7912A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DDE65D522EB82AE006C21C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8DE6B8E422EA64C70064FB74 /* PentagonPrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PentagonPrey.swift; sourceTree = "<group>"; };
+		8DE6B8E622EA65EF0064FB74 /* AI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +122,12 @@
 				8DA5946F22E2B04500D7912A /* AppDelegate.swift */,
 				8DA5947122E2B04500D7912A /* GameScene.sks */,
 				8D84ADC122E8BCA700A3B5C9 /* Player.swift */,
-				8D815C5422E9728C00AA6568 /* Prey.swift */,
+				8DE6B8E622EA65EF0064FB74 /* AI.swift */,
+				8DDE65D522EB82AE006C21C1 /* Constants.swift */,
 				8D815C5A22E9772100AA6568 /* Entity.swift */,
 				8D815C5822E976DC00AA6568 /* TrianglePrey.swift */,
+				8D1B8F5C22EA37D200E0AE26 /* SquarePrey.swift */,
+				8DE6B8E422EA64C70064FB74 /* PentagonPrey.swift */,
 				8D84ADC322E8C0BF00A3B5C9 /* Vector2.swift */,
 				8DA5947322E2B04500D7912A /* Actions.sks */,
 				8DA5947522E2B04500D7912A /* GameScene.swift */,
@@ -283,13 +292,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D84ADC222E8BCA700A3B5C9 /* Player.swift in Sources */,
+				8DDE65D622EB82AE006C21C1 /* Constants.swift in Sources */,
 				8DA5947622E2B04500D7912A /* GameScene.swift in Sources */,
+				8DE6B8E722EA65EF0064FB74 /* AI.swift in Sources */,
 				8D815C5922E976DC00AA6568 /* TrianglePrey.swift in Sources */,
 				8DA5947822E2B04500D7912A /* GameViewController.swift in Sources */,
 				8D815C5B22E9772100AA6568 /* Entity.swift in Sources */,
-				8D815C5522E9728D00AA6568 /* Prey.swift in Sources */,
 				8D84ADC422E8C0BF00A3B5C9 /* Vector2.swift in Sources */,
+				8D1B8F5D22EA37D200E0AE26 /* SquarePrey.swift in Sources */,
 				8DA5947022E2B04500D7912A /* AppDelegate.swift in Sources */,
+				8DE6B8E522EA64C70064FB74 /* PentagonPrey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
