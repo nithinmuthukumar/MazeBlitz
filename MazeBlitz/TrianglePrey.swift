@@ -10,6 +10,11 @@ import Foundation
 import SpriteKit
 import GameKit
 class TrianglePrey:Entity{
+    func eat(entity: Entity) {
+    }
+    
+    
+    
     var shape=Shape.Triangle
     
     
@@ -31,20 +36,17 @@ class TrianglePrey:Entity{
         path.addLine(to: CGPoint(x: 5*3, y: -3.66*3))
         path.addLine(to: CGPoint(x: -5*3, y: -3.66*3))
         path.addLine(to: CGPoint(x: 0.0, y: 5*3))
+        
         body=SKShapeNode(path: path.cgPath)
-        
-        
-    
         body.position.x=x
         body.position.y=y
-        
         body.run(SKAction.repeatForever(SKAction.rotate(byAngle: 1, duration: 2)))
         body.fillColor=SKColor.white
         body.strokeColor=SKColor.black
-        
         body.physicsBody=SKPhysicsBody(polygonFrom: body.path!)
         body.name=shape.description
     }
+    
     
 
     

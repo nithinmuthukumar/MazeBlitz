@@ -9,9 +9,14 @@
 import Foundation
 import SpriteKit
 enum Shape:Int,CaseIterable{
-    case Triangle,Square,Pentagon,Hexagon,Heptagon,Octagon,Nonagon,Decagon,Hendecagon,Dodecagon,Circle
+    case Triangle=1
+    case Square=2
+    case Pentagon=3
+    case Hexagon=4
+    case Heptagon=5
+    case Octagon=6
+    case Circle=100
     var description: String {
-        print(String(describing: self))
         return String(describing: self)
     }
     static func withLabel(_ label: String) -> Shape? {
@@ -25,7 +30,7 @@ enum Shape:Int,CaseIterable{
     
     
 }
-func createShape(_ shape:Shape)->SKShapeNode{
+func createShape(_ sides:Int)->SKShapeNode{
     return SKShapeNode()
     
     

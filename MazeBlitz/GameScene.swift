@@ -29,6 +29,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             entities.append(squarePrey)
         }
         physicsWorld.gravity=CGVector(dx:0,dy:0)
+        physicsWorld.contactDelegate=self
         
         
     }
@@ -99,17 +100,19 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
     }
     func didBegin(_ contact: SKPhysicsContact) {
+        print(contact)
         var nodeA=contact.bodyA.node!
         var nodeB=contact.bodyB.node!
-        if(nodeA.name!=nil||nodeB.name!=nil){
+        if(nodeA.name != nil||nodeB.name != nil){
             return
         }
-        var shapeA=Shape.withLabel(nodeA.name)
-        var shapeB=Shape.withLabel(nodeB.name)
-        if(shapeA<shapeB){
-            (nodeB as! Entity).eat(nodeA as! Entity)
-        }else if(shapeB<shapeA){
-            (nodeA as! Entity).eat(nodeB as! Entity)
+        var shapeA=Shape.withLabel(nodeA.name!)
+        var shapeB=Shape.withLabel(nodeB.name!)
+    
+        if(shapeA!.rawValue<shapeB!.rawValue){
+            (nodeB as! Entity).eat(entity:nodeA as! Entity)
+        }else if(shapeB!.rawValue<shapeA!.rawValue){
+            (nodeA as! Entity).eat(entity:nodeB as! Entity)
             
         }
         

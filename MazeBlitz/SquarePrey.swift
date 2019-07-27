@@ -18,6 +18,14 @@ class SquarePrey:AI,Entity{
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     var shape=Shape.Square
     var worth = 3
     var velocity=Vector2(0,0)
@@ -53,14 +61,26 @@ class SquarePrey:AI,Entity{
             }
             
         }
-        for p in prey{
-            
-            
+        if(velocity.len()==0){
+            for p in prey{
+                if p.shape==shape{
+                    continue
+                }
+                let v=Vector2(body.position,p.body.position)
+                if(v.len()<sightDistance){
+                    
+                    velocity.add(v.nor())
+                }
+            }
         }
-        
         velocity.nor()
         body.position.x-=velocity.x
         body.position.y-=velocity.y
+        
+    }
+    func eat(entity: Entity) {
+        body.fillColor=SKColor.red
+        
         
     }
     

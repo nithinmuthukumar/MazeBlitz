@@ -71,8 +71,8 @@ class Player:Entity{
         return false;
         
     }
-    func eat(_ p:Entity){
-        exp+=1
+    func eat(entity:Entity){
+        exp+=entity.worth
         if(exp>expPerLevel[0]){
             grow(body.path!.boundingBox.width)
             expPerLevel.removeFirst()

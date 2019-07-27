@@ -43,6 +43,11 @@ class Vector2{
         return self
         
     }
+    func add(_ v:Vector2)->Vector2{
+        x+=v.x
+        y+=v.y
+        return self
+    }
     func scl(_ factor:CGFloat)->Vector2{
         x*=factor
         y*=factor
